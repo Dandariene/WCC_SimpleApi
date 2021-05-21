@@ -17,7 +17,7 @@ class Agendamento {
         const sql = "INSERT INTO agendamentos SET ?";
 
         const data_servico = moment(agendamento.data_servico).format('YYYY-MM-DD');
-        const data_agendamento = moment().format('YYY-MM-DD');
+        const data_agendamento = moment().format('YYYY-MM-DD');
 
         const agendamentoComData = { ...agendamento, data_agendamento, data_servico };
         const ehDataValida = moment(agendamento.data_servico).isSameOrAfter(data_agendamento);
