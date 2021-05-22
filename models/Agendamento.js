@@ -76,6 +76,19 @@ class Agendamento {
         })
 
     }
+
+    remover(id, resp) {
+        const sql = `DELETE FROM agendamentos WHERE id = ?`
+        
+        conexao.query(sql, id, (error, results)=> {
+            if(error){
+                resp.status(400).json(error)
+            }
+            resp.status(201).json({
+               mensagem: `Agendamento com ${id} removido com sucesso!` 
+            })
+        });
+    };
 }
 
 module.exports = new Agendamento;
