@@ -4,12 +4,11 @@ module.exports = app => {
 
     app.get('/agendamentos', (req, resp) => {
         Agendamento.listagem(resp); 
-        Agendamento.buscaPorId(id, resp)
-
     });
 
-    app.get('/agendamentos:id', (req, resp) => {
+    app.get('/agendamentos:id/', (req, resp) => {
         const id = parseInt(req.params.id)
+        Agendamento.buscaPorId(id, resp)
     })
 
    
@@ -19,14 +18,14 @@ module.exports = app => {
         Agendamento.inserir(agendamento, resp);
     });
 
-    app.put('/agendamentos:id', (req, resp) => {
+    app.put('/agendamentos/:id', (req, resp) => {
         const id = parseInt(req.params.id)
         const agendamento = req.body;
 
         Agendamento.alterar(id, agendamento, resp);
     });
 
-    app.delete('/agendamentos:id', (req, resp) => {
+    app.delete('/agendamentos/:id', (req, resp) => {
         const id = parseInt(req.params.id)
         Agendamento.remover(id, resp);
     });
